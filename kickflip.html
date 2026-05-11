@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>How to Do a Kickflip – Beginner-Friendly Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --card: #0f172a;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.12);
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --danger: #f97373;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(56, 189, 248, 0.18), transparent 55%),
+        radial-gradient(circle at 90% 20%, rgba(129, 140, 248, 0.18), transparent 55%);
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+    .header-inner {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0.4rem 0 0.6rem;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      letter-spacing: 0.04em;
+    }
+
+    .tagline {
+      margin: 0.2rem 0 1.4rem;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.8rem;
+      color: var(--muted);
+      backdrop-filter: blur(10px);
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(56, 189, 248, 0.35);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto 3rem;
+      padding: 0 1.5rem 3rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.3fr);
+      gap: 1.75rem;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #111827, #020617);
+      border-radius: 1.1rem;
+      padding: 1.5rem 1.6rem;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.55),
+        0 0 0 1px rgba(15, 23, 42, 0.9);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.35rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h2 span.icon {
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      margin-top: 1.4rem;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0.4rem 0 0.8rem;
+      color: var(--muted);
+    }
+
+    ul, ol {
+      padding-left: 1.2rem;
+      margin: 0.4rem 0 0.8rem;
+      color: var(--muted);
+    }
+
+    li {
+      margin: 0.25rem 0;
+    }
+
+    strong {
+      color: #e5e7eb;
+      font-weight: 600;
+    }
+
+    .highlight {
+      background: rgba(15, 23, 42, 0.9);
+      border-left: 3px solid var(--accent);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.6rem;
+      font-size: 0.9rem;
+      margin: 0.6rem 0 0.8rem;
+      color: var(--muted);
+    }
+
+    .warning {
+      background: rgba(127, 29, 29, 0.9);
+      border-left: 3px solid var(--danger);
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.6rem;
+      font-size: 0.9rem;
+      margin: 0.6rem 0 0.8rem;
+      color: #fee2e2;
+    }
+
+    .steps {
+      counter-reset: step;
+      margin: 0.6rem 0 0.4rem;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: step;
+      margin: 0.5rem 0;
+      padding-left: 2.1rem;
+      position: relative;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+      width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+    }
+
+    .tip {
+      font-size: 0.9rem;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.7rem;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      margin-top: 0.4rem;
+      color: var(--muted);
+    }
+
+    .mini-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    code {
+      font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+      background: rgba(15, 23, 42, 0.9);
+      padding: 0.15rem 0.3rem;
+      border-radius: 0.3rem;
+      font-size: 0.85rem;
+      color: var(--accent);
+      border: 1px solid rgba(30, 64, 175, 0.7);
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      padding: 1.5rem 1rem 2.5rem;
+    }
+
+    .cta {
+      margin-top: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(15, 23, 42, 0.9);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .cta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        Street basics · Flatground kickflip
+      </div>
+      <h1>How to Do a Kickflip</h1>
+      <p class="tagline">
+        The classic flip trick: pop, flick, spin, catch. Learn it slowly, safely, and with control.
+      </p>
+      <div class="cta">
+        <span class="cta-dot"></span>
+        Best place to learn: smooth flat ground, away from traffic and obstacles
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid">
+      <!-- Main content -->
+      <article class="card">
+        <h2><span class="icon">🛹</span>Before you try a kickflip</h2>
+        <p>
+          A kickflip is a flip trick where your board spins once under you along its length while you stay
+          centered and land back on the bolts. It builds directly on an ollie, so you should already feel
+          comfortable riding, turning, stopping, and doing basic ollies on flat ground.
+        </p>
+
+        <div class="warning">
+          Skateboarding can cause falls and injuries. Always wear a helmet, and strongly consider wrist guards,
+          knee pads, and elbow pads. Practice on flat, dry ground away from cars, people, and hard edges.
+        </div>
+
+        <h3>Recommended gear</h3>
+        <ul>
+          <li><strong>Helmet:</strong> Properly fitted, buckled every time.</li>
+          <li><strong>Pads:</strong> Wrist, knee, and elbow pads, especially while learning new tricks.</li>
+          <li><strong>Shoes:</strong> Grippy skate shoes with a flat sole and decent side padding.</li>
+          <li><strong>Board:</strong> A standard street deck with good grip tape and trucks you’re used to.</li>
+        </ul>
+
+        <div class="highlight">
+          If you can’t comfortably roll and ollie without thinking about it, stay with those first. A solid
+          foundation makes kickflips much safer and way less frustrating.
+        </div>
+
+        <h2><span class="icon">👣</span>Foot placement and body position</h2>
+        <p>
+          Set up similar to an ollie, with a small adjustment in your front foot to help the board flip.
+        </p>
+        <ul>
+          <li><strong>Back foot:</strong> On the tail, ball of your foot centered, ready to pop straight down.</li>
+          <li><strong>Front foot:</strong> Just behind the front bolts, angled slightly (about 30–45°) toward the nose, with a bit of your toes hanging off the edge.</li>
+          <li><strong>Shoulders:</strong> In line with the board, knees bent, weight centered—not leaning too far forward or back.</li>
+        </ul>
+
+        <h2><span class="icon">🔁</span>Kickflip in 5 controlled phases</h2>
+        <p>
+          Think of the trick as a sequence: <strong>set up → pop → flick → wait → catch and land</strong>.
+          Go slowly and focus on one part at a time.
+        </p>
+
+        <ol class="steps">
+          <li>
+            <strong>Set up and roll slowly</strong><br />
+            Start at a comfortable, slow speed on smooth ground. Bend your knees slightly and keep your weight
+            centered over the board.
+          </li>
+          <li>
+            <strong>Pop like an ollie</strong><br />
+            Press your back foot down sharply on the tail to pop the board. At the same time, begin to rise with
+            your body—don’t stay stiff.
+          </li>
+          <li>
+            <strong>Slide and flick the front foot</strong><br />
+            As the board pops, slide your front foot up toward the nose at a slight diagonal toward the heel-side
+            edge. When you reach the edge, <strong>flick out and slightly up</strong> with your front foot, not
+            straight down. This flick starts the flip.
+          </li>
+          <li>
+            <strong>Let the board flip under you</strong><br />
+            After the flick, pull your front foot away and up so the board has space to spin. Keep your eyes on
+            the grip tape—wait until you see it come back around.
+          </li>
+          <li>
+            <strong>Catch and land</strong><br />
+            When the board finishes its flip and the grip tape is facing up again, aim to catch it first with your
+            back foot over the tail, then bring your front foot down over the front bolts. Bend your knees to
+            absorb the landing and roll away.
+          </li>
+        </ol>
+
+        <div class="highlight">
+          Early on, it’s totally fine to practice the flick while holding onto a rail or wall, or even on grass
+          or a carpeted surface so the board doesn’t roll away. Focus on a clean, controlled flip before worrying
+          about rolling fast.
+        </div>
+
+        <h2><span class="icon">🧩</span>Common problems and quick fixes</h2>
+        <ul>
+          <li>
+            <strong>Board flips too much:</strong> You’re flicking too hard or too far off the side. Try a softer,
+            shorter flick and keep more of your front foot on the board.
+          </li>
+          <li>
+            <strong>Board doesn’t flip enough:</strong> Make sure your front foot is angled and reaching the
+            heel-side edge. Focus on a sharp flick off the corner of the nose.
+          </li>
+          <li>
+            <strong>Board flies behind you:</strong> You might be leaning back. Keep your chest over the middle of
+            the board and pop straight down.
+          </li>
+          <li>
+            <strong>Landing with one foot:</strong> Commit with both feet over the bolts. Start at slower speed and
+            tell yourself you’re landing with both feet, even if you have to step off right after.
+          </li>
+        </ul>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="card">
+        <div class="sidebar-section">
+          <div class="mini-tag">Safety first</div>
+          <h3>Smart practice habits</h3>
+          <ul>
+            <li><strong>Warm up:</strong> A few minutes of rolling, turning, and basic ollies.</li>
+            <li><strong>Short sessions:</strong> Take breaks—tired legs and frustration lead to sloppy, risky attempts.</li>
+            <li><strong>Clear space:</strong> No loose boards, rocks, or people in your landing zone.</li>
+            <li><strong>Know your limits:</strong> If something feels sketchy, reset your stance or slow down.</li>
+          </ul>
+          <div class="tip">
+            If you fall, take a moment to check in with your body. Stop if you feel pain, dizziness, or anything
+            unusual, and seek medical help if needed.
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="mini-tag">Progression ideas</div>
+          <h3>Build up gradually</h3>
+          <ul>
+            <li><strong>Step 1:</strong> Practice the flick while holding a rail or wall.</li>
+            <li><strong>Step 2:</strong> Try stationary kickflips on grass or carpet.</li>
+            <li><strong>Step 3:</strong> Move to slow rolling attempts on smooth flat ground.</li>
+            <li><strong>Step 4:</strong> Increase speed only when you’re landing consistently.</li>
+          </ul>
+          <div class="badge-row">
+            <span class="badge">Control</span>
+            <span class="badge">Consistency</span>
+            <span class="badge">Then speed</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="mini-tag">Mindset</div>
+          <h3>Dealing with frustration</h3>
+          <p>
+            Kickflips usually take many sessions to feel reliable. It’s normal to land one and then miss ten.
+            Instead of chasing perfection, look for small wins: a cleaner flick, a straighter board, a better catch.
+          </p>
+          <div class="tip">
+            Set a simple goal like “10 focused attempts” and then stop. Ending before you’re exhausted keeps your
+            confidence and your body safer.
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="mini-tag">For developers</div>
+          <h3>Using this page</h3>
+           <a href="index.html">Get me out of here</a>
+           <a href="embroidery.html">For something completely different</a>
+          <p>
+            Save this file as <code>kickflip.html</code> and drop it into your project, or copy the
+            <code>&lt;article&gt;</code> and <code>&lt;aside&gt;</code> blocks into your existing layout.
+          </p>
+          <p>
+            You can also turn the “Kickflip in 5 phases” list into a step-by-step UI component or tutorial card.
+          </p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    Progress is one clean attempt at a time—never trade safety for one more try.
+  </footer>
+</body>
+</html>
