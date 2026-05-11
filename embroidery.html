@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Embroidery 101 – A Beginner’s Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #faf6f1;
+      --accent: #c96b7b;
+      --accent-soft: #f3c3cf;
+      --text: #333;
+      --card: #ffffff;
+      --code: #2d2d2d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top left, #fff7f0, #f3e3d5);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, var(--accent), #f29b7d);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before,
+    header::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.25;
+      filter: blur(4px);
+    }
+
+    header::before {
+      width: 220px;
+      height: 220px;
+      background: #ffe3ec;
+      top: -60px;
+      left: -40px;
+    }
+
+    header::after {
+      width: 260px;
+      height: 260px;
+      background: #ffd2b8;
+      bottom: -80px;
+      right: -60px;
+    }
+
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      letter-spacing: 0.04em;
+    }
+
+    .tagline {
+      margin: 0.25rem 0 1.5rem;
+      font-size: 1.05rem;
+      opacity: 0.95;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.18);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      font-size: 0.85rem;
+      backdrop-filter: blur(6px);
+    }
+
+    .pill-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #ffe3ec;
+      box-shadow: 0 0 0 4px rgba(255, 227, 236, 0.4);
+    }
+
+    main {
+      max-width: 1000px;
+      margin: -1.5rem auto 3rem;
+      padding: 0 1.5rem 3rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.2fr) minmax(0, 1.4fr);
+      gap: 1.75rem;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    .card {
+      background: var(--card);
+      border-radius: 1.1rem;
+      padding: 1.5rem 1.6rem;
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.08),
+        0 0 0 1px rgba(255, 255, 255, 0.7);
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    h2 span.icon {
+      font-size: 1.3rem;
+    }
+
+    h3 {
+      margin-top: 1.4rem;
+      font-size: 1.05rem;
+    }
+
+    p {
+      margin: 0.4rem 0 0.8rem;
+    }
+
+    ul, ol {
+      padding-left: 1.2rem;
+      margin: 0.4rem 0 0.8rem;
+    }
+
+    li {
+      margin: 0.25rem 0;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-top: 0.5rem;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      background: #fff5f7;
+      color: #9b3b4f;
+      border: 1px solid #f3c3cf;
+    }
+
+    .highlight {
+      background: #fff7e6;
+      border-left: 3px solid #f2a65a;
+      padding: 0.6rem 0.8rem;
+      border-radius: 0.6rem;
+      font-size: 0.9rem;
+      margin: 0.6rem 0 0.8rem;
+    }
+
+    .stitch-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.6rem;
+    }
+
+    .stitch {
+      padding: 0.7rem 0.8rem;
+      border-radius: 0.8rem;
+      background: #fff9f5;
+      border: 1px dashed #f0c2a3;
+      font-size: 0.9rem;
+    }
+
+    .stitch strong {
+      display: block;
+      margin-bottom: 0.15rem;
+    }
+
+    .steps {
+      counter-reset: step;
+      margin: 0.6rem 0 0.4rem;
+      padding-left: 0;
+      list-style: none;
+    }
+
+    .steps li {
+      counter-increment: step;
+      margin: 0.4rem 0;
+      padding-left: 2rem;
+      position: relative;
+    }
+
+    .steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0.1rem;
+      width: 1.4rem;
+      height: 1.4rem;
+      border-radius: 50%;
+      background: var(--accent-soft);
+      color: #5b2833;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .sidebar-section {
+      margin-bottom: 1.4rem;
+    }
+
+    .tip {
+      font-size: 0.9rem;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.7rem;
+      background: #f4f8ff;
+      border: 1px solid #c5d7ff;
+      margin-top: 0.4rem;
+    }
+
+    .mini-tag {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #777;
+      margin-bottom: 0.15rem;
+    }
+
+    code {
+      font-family: "SF Mono", Menlo, Monaco, Consolas, monospace;
+      background: #f4f4f4;
+      padding: 0.15rem 0.3rem;
+      border-radius: 0.3rem;
+      font-size: 0.85rem;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 0.85rem;
+      color: #777;
+      padding: 1.5rem 1rem 2.5rem;
+    }
+
+    .cta {
+      margin-top: 1.2rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.55rem 1.1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+      font-size: 0.9rem;
+      cursor: default;
+    }
+
+    .cta-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <div class="pill">
+        <span class="pill-dot"></span>
+        Beginner-friendly · Hand embroidery
+      </div>
+      <h1>Embroidery 101</h1>
+      <p class="tagline">
+        Slow down, thread your needle, and learn the stitches that turn simple fabric into something personal.
+      </p>
+      <div class="cta">
+        <span class="cta-dot"></span>
+        First project idea: a tiny floral hoop with your initials
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="grid">
+      <!-- Main content -->
+      <article class="card">
+        <h2><span class="icon">🧵</span>What is embroidery?</h2>
+        <p>
+          Embroidery is the art of decorating fabric with needle and thread. It can be as simple as a
+          single stitched initial on a napkin or as detailed as a full floral scene on a jacket. The magic
+          comes from a handful of basic stitches, repeated with intention.
+        </p>
+
+        <div class="highlight">
+          Embroidery rewards small, steady practice—five minutes of stitching a day beats one rushed weekend marathon.
+        </div>
+
+        <h3>Essential tools and materials</h3>
+        <ul>
+          <li><strong>Fabric:</strong> Light to medium-weight cotton or linen is perfect for beginners.</li>
+          <li><strong>Embroidery hoop:</strong> 5–7 inch wooden or plastic hoop to keep fabric drum-tight.</li>
+          <li><strong>Needles:</strong> Embroidery/crewel needles (size 5–7 works well with 1–3 strands of floss).</li>
+          <li><strong>Thread:</strong> Cotton embroidery floss, usually six strands you can separate.</li>
+          <li><strong>Scissors:</strong> Small, sharp pair for clean cuts.</li>
+          <li><strong>Marking tool:</strong> Water-soluble pen, heat-erasable pen, or light pencil for your design.</li>
+        </ul>
+
+        <h3>Set up your first hoop</h3>
+        <ol class="steps">
+          <li>Separate the inner and outer rings of your hoop.</li>
+          <li>Lay your fabric over the inner ring, then press the outer ring on top.</li>
+          <li>Gently pull the fabric edges until it feels smooth and drum-tight.</li>
+          <li>Tighten the screw, then tug the fabric once more to remove wrinkles.</li>
+          <li>Trim excess fabric if it gets in your way (leave at least a few centimeters all around).</li>
+        </ol>
+
+        <h2><span class="icon">🪡</span>Core stitches to learn first</h2>
+        <p>
+          You don’t need dozens of fancy techniques. Start with a small “toolbox” of stitches that each
+          do something different: outline, fill, or add texture.
+        </p>
+
+        <div class="stitch-list">
+          <div class="stitch">
+            <strong>Running stitch</strong>
+            A simple dashed line—great for borders, guidelines, and subtle texture.
+          </div>
+          <div class="stitch">
+            <strong>Backstitch</strong>
+            Creates a solid, ink-like line. Perfect for outlines, lettering, and stems.
+          </div>
+          <div class="stitch">
+            <strong>Straight stitch</strong>
+            Single stitches used for petals, leaves, rays, and filling small shapes.
+          </div>
+          <div class="stitch">
+            <strong>Chain stitch</strong>
+            Linked loops that form a decorative, slightly raised line—lovely for vines and borders.
+          </div>
+          <div class="stitch">
+            <strong>Satin stitch</strong>
+            Parallel stitches that fill a shape smoothly, like coloring with thread.
+          </div>
+          <div class="stitch">
+            <strong>French knot</strong>
+            Tiny raised dots—perfect for flower centers, berries, and texture.
+          </div>
+        </div>
+
+        <h3>How to work a simple backstitch</h3>
+        <ol class="steps">
+          <li>Bring the needle up at point A (start of the line).</li>
+          <li>Insert the needle down at point B (a short distance ahead).</li>
+          <li>Come up again at point C (another stitch-length ahead of B).</li>
+          <li>Insert the needle back down at point B, “back” into the end of the previous stitch.</li>
+          <li>Repeat: up ahead, down into the previous endpoint, keeping your stitches even.</li>
+        </ol>
+
+        <h2><span class="icon">🌸</span>Your first mini project</h2>
+        <p>
+          Try a small 10–12 cm hoop with your initial and a few flowers. It’s quick, forgiving, and
+          teaches you how different stitches work together.
+        </p>
+
+        <h3>Suggested stitch plan</h3>
+        <ul>
+          <li><strong>Initial:</strong> Outline the letter with backstitch.</li>
+          <li><strong>Stem:</strong> Use backstitch or chain stitch for a curved line.</li>
+          <li><strong>Leaves:</strong> Straight stitches radiating from a center line.</li>
+          <li><strong>Flowers:</strong> Straight stitches for petals, French knots for centers.</li>
+        </ul>
+
+        <div class="highlight">
+          Don’t chase perfection. Uneven stitches are just “handmade” showing through—and that’s the charm.
+        </div>
+      </article>
+
+      <!-- Sidebar -->
+      <aside class="card">
+        <div class="sidebar-section">
+          <div class="mini-tag">Quick reference</div>
+          <h3>Thread & needle basics</h3>
+          <p>
+            Most embroidery floss comes in <strong>6 strands</strong>. For beginners:
+          </p>
+          <ul>
+            <li><strong>1–2 strands:</strong> Fine lines and small details.</li>
+            <li><strong>3 strands:</strong> Everyday outlines and petals.</li>
+            <li><strong>4–6 strands:</strong> Bold lines and chunky texture.</li>
+          </ul>
+          <div class="tip">
+            Cut thread lengths around 30–45 cm. Longer pieces tangle more easily and wear out faster.
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="mini-tag">Stitch chooser</div>
+          <h3>Match stitch to effect</h3>
+          <ul>
+            <li><strong>Clean outline:</strong> Backstitch or split stitch.</li>
+            <li><strong>Dashed line:</strong> Running stitch.</li>
+            <li><strong>Soft filled shape:</strong> Satin stitch.</li>
+            <li><strong>Textured border:</strong> Chain stitch or blanket stitch.</li>
+            <li><strong>Little dots:</strong> French knots.</li>
+          </ul>
+          <div class="badge-row">
+            <span class="badge">Outlines</span>
+            <span class="badge">Fills</span>
+            <span class="badge">Texture</span>
+          </div>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="mini-tag">Common beginner mistakes</div>
+          <h3>And how to avoid them</h3>
+          <ul>
+            <li><strong>Fabric too loose:</strong> Tighten the hoop until it feels like a drum.</li>
+            <li><strong>Thread knots:</strong> Use shorter lengths and let the needle dangle to untwist.</li>
+            <li><strong>Puckering:</strong> Don’t pull too hard—aim for snug, not tight.</li>
+            <li><strong>Messy back:</strong> Finish threads with small knots or weave them under existing stitches.</li>
+          </ul>
+        </div>
+
+        <div class="sidebar-section">
+          <div class="mini-tag">For developers</div>
+          <h3>Embedding this page</h3>
+           <a href="kickflip.html">Check this out</a>
+           <a href="index.html">Get me out of here</a>
+          <p>
+            Drop this file into your project as <code>embroidery.html</code>, or use the main content inside
+            your existing layout.
+          </p>
+          <p>
+            You can also extract the “Core stitches” section as a reusable component in your design system.
+          </p>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <footer>
+    Stitched with patience, one tiny loop at a time.
+  </footer>
+</body>
+</html>
